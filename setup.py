@@ -15,7 +15,7 @@ with open('case_management/__init__.py', 'rb') as f:
 
 setup(
 	name='case_management',
-	version=version,
+	version='1.0.0',
 	description='Erpnext customization for LAW Firm',
 	author='masonarmani, Anthony Emmanuel',
 	author_email='masonarmani38@gmail.com, Anthony Emmanuel mymi14s@gmil.com',
