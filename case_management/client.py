@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2017, masonarmani38@gmail.com and contributors
+# Copyright (c) 2017, masonarmani38@gmail.com and, mymi14s@gmail.com [anthony Emmanuel] contributors
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
@@ -25,17 +25,17 @@ def update_customer_folder_structure(customer):
 
     if(folder_structure.get('apply_on'))  == "Client":
         client_structure = get_structure(client=client_name)
-        folders.append({"parent": root, "folder_name": client_name})
+        folders.append({"parent": root, "folder_name": str(client_name.replace('/', '-')).replace('"', '')})
 
         for (key, client) in client_structure.items():
             if isinstance(client, dict):
                 for (k, v) in client.items():
                     parent = "{0}/{1}".format(root, key)
-                    folders.append({"parent": parent, "folder_name": k})
+                    folders.append({"parent": parent, "folder_name": str(k.replace('/', '-')).replace('"', '')})
 
                     if isinstance(v, list):
                         for i in v:
-                            folders.append({"parent": "{0}/{1}".format(parent, k), "folder_name": i})
+                            folders.append({"parent": "{0}/{1}".format(parent, str(k.replace('/', '-')).replace('"', '')), "folder_name": str(i.replace('/', '-')).replace('"', '')})
 
         for folder in folders:
             create_new_folder(folder.get('folder_name'), folder.get('parent'), customer_email)
@@ -53,17 +53,17 @@ def update_customer_matter_folder_structure(matter, customer):
     if folder_structure.get('apply_on') == "Matter":
         client_structure = get_structure(client=client_name)
         folders.append({"parent": root, "folder_name": client_name})
-        folders.append({"parent": "{0}/{1}".format(root, client_name), "folder_name": matter.name})
+        folders.append({"parent": "{0}/{1}".format(root, client_name), "folder_name": str(matter.name.replace('/', '-')).replace('"', '')})
 
         for (key, client) in client_structure.items():
             if isinstance(client, dict):
                 for (k, v) in client.items():
-                    parent = "{0}/{1}/{2}".format(root, key,matter.name)
-                    folders.append({"parent": parent, "folder_name": k})
+                    parent = "{0}/{1}/{2}".format(root, key, str(matter.name.replace('/', '-')).replace('"', ''))
+                    folders.append({"parent": parent, "folder_name": str(k.replace('/', '-')).replace('"', '')})
 
                     if isinstance(v, list):
                         for i in v:
-                            folders.append({"parent": "{0}/{1}".format(parent, k), "folder_name": i})
+                            folders.append({"parent": "{0}/{1}".format(parent, str(k.replace('/', '-')).replace('"', '')), "folder_name": str(i.replace('/', '-')).replace('"', '')})
 
         for folder in folders:
             create_new_folder(folder.get('folder_name'), folder.get('parent'), customer_email)
@@ -395,3 +395,14 @@ def delete_bulk_force(doctype, items, recursive =False):
 def get_children(doctype, parent):
 	return frappe.db.sql ("select name from `tab{0}` where name like '%{1}%' "
 						  "and name != '{1}'".format(doctype,parent), as_dict=1)
+
+
+# unprivate files in File
+# def is_private_0_before_insert(file, trigger=""):
+#     if file.is_folder == 0:
+#         file.is_private = 0
+
+
+def validate_update_tabfile_private(doc, event):
+    if(doc.is_folder==False):
+        doc.is_private= False

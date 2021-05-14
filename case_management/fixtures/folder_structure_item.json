@@ -1,0 +1,86 @@
+[
+ {
+  "child": "Case Files",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "83bc652092",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Scanned documents",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "19919ff81b",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Meetings/Memo",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "8172ee4a1c",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Emails",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "d469cf3d7b",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Correspondence",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "294d3bdc3e",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Document",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "a322edca51",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ },
+ {
+  "child": "Agreements",
+  "docstatus": 0,
+  "doctype": "Folder Structure Item",
+  "is_root": 1,
+  "modified": "2019-12-02 10:51:44.111455",
+  "name": "cae9b1e994",
+  "parent": "Default",
+  "parent_folder": null,
+  "parentfield": "folders",
+  "parenttype": "Folder Structure"
+ }
+]

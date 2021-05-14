@@ -22,7 +22,7 @@ class Matter(Document):
 
     def autoname(self):
         if self.original_matter_id is not None:
-            self.name = self.original_matter_id
+            self.name = str(self.original_matter_id).replace('"','')
         self.name = self.name
 
     def get_custom_field(self):

@@ -48,3 +48,4 @@ def set_name_translation(translation, label):
                                 source_name=translation[0],
                                 target_name=label,
                                 language_code=frappe.local.lang or 'en')).insert()
+

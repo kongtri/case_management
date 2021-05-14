@@ -44,8 +44,7 @@ frappe.ui.form.on('Matter', {
                 // }).css({"background-color": "rgb(20, 100, 122)", "color": 'white', "font-weight": 'bolder'});
             }
              // Close Matter
-             // console.log(frappe.user.name)
-            if ((frappe.user.name == cur_frm.doc.owner || frappe.user_roles.includes("Practice Manager")) || frappe.user.name == "Administrator") {
+            if (frappe.user.name == cur_frm.doc.owner && frappe.user_roles.includes("Practice Manager")) {
                 if (cur_frm.doc.status != "Closed") {
                     frm.add_custom_button(__('Close Matter'), function () {
                         frappe.confirm("Are you sure you want to close this this matter?", function () {
@@ -100,43 +99,18 @@ frappe.ui.form.on('Matter', {
 	    //	let new_route = `${cur_frm.doc.name}`.split('/').join('')
             //    frappe.set_route(`List/File/Home/Clients/${cur_frm.doc.client}/${new_route}`);
             //});
-	    
-	       // console.log(cur_frm.doc.creation)
-	        let split_date = parseInt(String(cur_frm.doc.creation.split(' ')[0]).split('-').join(''));
-	        let route_link = "";
-            // console.log(split_date)
-
-	        if (split_date <= 20200712){
-                // route_link = cur_frm.doc.name;
-                frm.add_custom_button(__('Case Folder'), function () {
-                    frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, cur_frm.doc.name);
-                }, "View");
-	        } else if (split_date >= 20200801){
-	        	// route_link = `${cur_frm.doc.name}`.replace('/', '-');
-                frm.add_custom_button(__('Case Folder'), function () {
-                    frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, `${cur_frm.doc.name}`.split('/').join('-').split('"').join(''));
-	           }, "View");
-            }else {
-	        	// route_link = `${cur_frm.doc.name}`.replace('/', '');
-                frm.add_custom_button(__('Case Folder (Unavailable)'), function () {
-                    // frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, `${cur_frm.doc.name}`.replace('/', '-'));
-               }, "View");
-             }
-	        // console.log(split_date)
-          //   frm.add_custom_button(__('Case Folder'), function () {
-          //       frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, route_link);
-	         // }, "View");
-                
-            
+	    frm.add_custom_button(__('Case Folder (New)'), function () {
+		//frappe.route_options = {}
+		console.log('Hello');
+		
+	    	let get_creation_date = frappe.db.get_doc('Matter', cur_frm.doc.name)
+    		console.log(get_creation_date);
+            	frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, `${cur_frm.doc.name}`.replace('/', '-'));
+            }, "View");
             // old file
-            // frm.add_custom_button(__('Case Folder (Upgrade)'), function () {
-            //     frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, `${cur_frm.doc.name}`.replace('/', '-'));
-            // }, "View");
-
-
-            // frm.add_custom_button(__('Case Folder (Old)'), function () {
-            //     frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, cur_frm.doc.name);
-            // }, "View");
+            frm.add_custom_button(__('Case Folder (Old)'), function () {
+                frappe.set_route("List", "File", "Home", "Clients", cur_frm.doc.client, cur_frm.doc.name);
+            }, "View");
 
 
             // List/File/Home/Clients/For%20Test%20Purposes/QW54345/ER55434/Case%20Files

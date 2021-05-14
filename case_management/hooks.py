@@ -43,8 +43,8 @@ app_license = "MIT"
 # website_generators = ["Web Page"]
 
 # Fixtures
-fixtures = []
-
+#fixtures = ['Custom Field', 'Translation']
+fixtures = ["Custom Field", "Role", "Translation", "Folder", "Folder Structure", "Desk Card", "Desk Chart", "Desk Shortcut", "Desk Page", "Naming Series"]
 # Installation
 # ------------
 
@@ -101,6 +101,9 @@ doc_events = {
     },
     "Matter": {
         "on_update": "case_management.client.update_all_matter"
+    },
+    "File": {
+        "validate": "case_management.client.validate_update_tabfile_private"
     }
 }
 
